@@ -22,54 +22,47 @@ const amenities = [
 const IndexPage = () => {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroCommunity}
-            alt="Aerial view of Fairway Manor community"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/50" />
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="relative z-10 glass-card px-8 py-10 md:px-14 md:py-14 max-w-2xl text-center mx-6"
-        >
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary mb-4 leading-tight">
-            Life, Above Par.
-          </h1>
-          <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-lg mx-auto">
-            A premier 55+ community on Long Island's most picturesque 75 wooded acres.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/floor-plans"
-              className="bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2"
+      {/* Hero — Full bleed image, no overlay card, no dark shade */}
+      <section className="relative h-screen min-h-[700px]">
+        <img
+          src={heroCommunity}
+          alt="Aerial view of Fairway Manor community"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Bottom-anchored text strip */}
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent pt-40 pb-16">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+              className="max-w-2xl"
             >
-              View Available Residences
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/contact"
-              className="border-2 border-primary text-primary px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 hover:bg-primary hover:text-primary-foreground flex items-center justify-center gap-2"
-            >
-              Schedule a Tour
-            </Link>
+              <div className="edge-line mb-6" />
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground mb-4 leading-[1.1]">
+                Residential Apartments<br />For Seniors 55 & Older
+              </h1>
+              <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-lg">
+                A premier community on Long Island's most picturesque 75 wooded acres in Patchogue, NY.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/floor-plans"
+                  className="bg-accent text-accent-foreground px-7 py-3.5 font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2"
+                >
+                  View Residences
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="border-2 border-primary-foreground/70 text-primary-foreground px-7 py-3.5 font-semibold text-base transition-all duration-300 hover:bg-primary-foreground/10 flex items-center justify-center gap-2"
+                >
+                  Schedule a Tour
+                </Link>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 w-6 h-10 border-2 border-primary-foreground/40 rounded-full flex items-start justify-center p-2"
-        >
-          <div className="w-1.5 h-1.5 bg-primary-foreground/60 rounded-full" />
-        </motion.div>
+        </div>
       </section>
 
       {/* Welcome Section */}
@@ -78,7 +71,8 @@ const IndexPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <SectionReveal>
               <div className="space-y-6">
-                <p className="text-accent font-semibold text-sm uppercase tracking-widest">Welcome to Fairway Manor</p>
+                <div className="edge-line" />
+                <p className="text-accent font-semibold text-sm uppercase tracking-[0.2em]">Welcome to Fairway Manor</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-primary leading-tight">
                   A community designed for the next best chapter.
                 </h2>
@@ -101,9 +95,9 @@ const IndexPage = () => {
                 <img
                   src={clubhouseInterior}
                   alt="Fairway Manor Clubhouse Interior"
-                  className="w-full rounded-2xl fairway-shadow"
+                  className="w-full fairway-shadow"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-2xl hidden md:block">
+                <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 hidden md:block">
                   <p className="font-display text-3xl font-semibold">75</p>
                   <p className="text-sm text-primary-foreground/80">Wooded Acres</p>
                 </div>
@@ -118,17 +112,18 @@ const IndexPage = () => {
         <div className="container mx-auto">
           <SectionReveal>
             <div className="text-center mb-16">
-              <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">Our Amenities</p>
+              <div className="edge-line mx-auto mb-5" />
+              <p className="text-accent font-semibold text-sm uppercase tracking-[0.2em] mb-3">Our Amenities</p>
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">
                 Everything You Would Want
               </h2>
             </div>
           </SectionReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {amenities.map((item, i) => (
-              <SectionReveal key={item.title} delay={i * 0.1}>
-                <div className="glass-card p-8 rounded-2xl h-full group hover:shadow-lg transition-shadow duration-300">
-                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
+              <SectionReveal key={item.title} delay={i * 0.08}>
+                <div className="bg-background p-8 h-full group hover:bg-secondary/50 transition-colors duration-300">
+                  <div className="w-12 h-12 border border-accent/30 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
                     <item.icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-primary mb-2">{item.title}</h3>
@@ -141,7 +136,7 @@ const IndexPage = () => {
             <div className="text-center mt-12">
               <Link
                 to="/amenities"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
               >
                 Explore All Amenities <ArrowRight className="w-4 h-4" />
               </Link>
@@ -155,16 +150,17 @@ const IndexPage = () => {
         <div className="container mx-auto">
           <SectionReveal>
             <div className="text-center mb-16">
-              <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">Gallery</p>
+              <div className="edge-line mx-auto mb-5" />
+              <p className="text-accent font-semibold text-sm uppercase tracking-[0.2em] mb-3">Gallery</p>
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">
                 Experience the Grounds
               </h2>
             </div>
           </SectionReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
             {[aerialGrounds, lakesidePatio, fitnessCenter, communityRoom, apartmentInterior, clubhouseInterior].map((img, i) => (
-              <SectionReveal key={i} delay={i * 0.08}>
-                <div className="relative overflow-hidden rounded-2xl group aspect-[4/3]">
+              <SectionReveal key={i} delay={i * 0.06}>
+                <div className="relative overflow-hidden group aspect-[4/3]">
                   <img
                     src={img}
                     alt={`Fairway Manor gallery image ${i + 1}`}
@@ -192,29 +188,32 @@ const IndexPage = () => {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src={aerialGrounds} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40" />
         </div>
-        <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="relative z-10 container mx-auto px-6">
           <SectionReveal>
-            <h2 className="font-display text-3xl md:text-5xl font-semibold text-primary-foreground mb-6 leading-tight">
-              Hurry In for the Best Deal<br className="hidden md:block" /> on Long Island
-            </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-              600 Clubhouse Drive, Patchogue, NY 11772
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:16313635760"
-                className="bg-accent text-accent-foreground px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
-              >
-                Call (631) 363-5760
-              </a>
-              <Link
-                to="/contact"
-                className="border-2 border-primary-foreground/80 text-primary-foreground px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:bg-primary-foreground/10"
-              >
-                Request Information
-              </Link>
+            <div className="max-w-xl">
+              <div className="edge-line mb-6" style={{ backgroundColor: "hsl(var(--accent))" }} />
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-primary-foreground mb-6 leading-tight">
+                Hurry In for the Best Deal on Long Island
+              </h2>
+              <p className="text-primary-foreground/80 text-lg mb-8">
+                600 Clubhouse Drive, Patchogue, NY 11772
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="tel:16313635760"
+                  className="bg-accent text-accent-foreground px-7 py-3.5 font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98] text-center"
+                >
+                  Call (631) 363-5760
+                </a>
+                <Link
+                  to="/contact"
+                  className="border-2 border-primary-foreground/70 text-primary-foreground px-7 py-3.5 font-semibold transition-all duration-300 hover:bg-primary-foreground/10 text-center"
+                >
+                  Request Information
+                </Link>
+              </div>
             </div>
           </SectionReveal>
         </div>
