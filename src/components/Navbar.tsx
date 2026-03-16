@@ -33,7 +33,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md py-3 fairway-shadow"
+          ? "bg-background/95 backdrop-blur-sm py-3 border-b border-border"
           : "bg-transparent py-5"
       }`}
     >
@@ -46,13 +46,12 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${
+              className={`text-sm font-medium tracking-wide uppercase transition-colors duration-300 hover:text-accent ${
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               } ${location.pathname === link.path ? "text-accent" : ""}`}
             >
@@ -73,13 +72,12 @@ const Navbar = () => {
           </a>
           <Link
             to="/contact"
-            className="bg-accent text-accent-foreground px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+            className="bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
           >
             Schedule Tour
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           className={`lg:hidden p-2 transition-colors ${
@@ -90,38 +88,31 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border overflow-hidden"
+            className="lg:hidden bg-background border-t border-border overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-base font-medium py-2 transition-colors hover:text-accent ${
+                  className={`text-base font-medium py-2 uppercase tracking-wide transition-colors hover:text-accent ${
                     location.pathname === link.path ? "text-accent" : "text-foreground"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="tel:16313635760"
-                className="flex items-center gap-2 text-base font-medium text-primary py-2"
-              >
+              <a href="tel:16313635760" className="flex items-center gap-2 text-base font-medium text-primary py-2">
                 <Phone className="w-4 h-4" />
                 (631) 363-5760
               </a>
-              <Link
-                to="/contact"
-                className="bg-accent text-accent-foreground px-5 py-3 rounded-xl text-center font-semibold mt-2"
-              >
+              <Link to="/contact" className="bg-accent text-accent-foreground px-5 py-3 text-center font-semibold mt-2">
                 Schedule Tour
               </Link>
             </nav>

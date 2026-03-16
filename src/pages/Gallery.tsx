@@ -27,65 +27,39 @@ const categories = ["All", "Grounds", "Clubhouse", "Apartments"];
 const GalleryPage = () => {
   const [filter, setFilter] = useState("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
-
   const filtered = filter === "All" ? galleryImages : galleryImages.filter((img) => img.category === filter);
 
   return (
     <div>
-      {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img src={aerialGrounds} alt="Fairway Manor" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/60" />
         </div>
-        <div className="relative z-10 text-center px-6">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground mb-4">Gallery</h1>
-          <p className="text-primary-foreground/80 text-lg md:text-xl max-w-xl mx-auto">Explore our beautiful community grounds and facilities</p>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent pt-32 pb-12">
+          <div className="container mx-auto px-6">
+            <div className="edge-line mb-4" />
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground">Gallery</h1>
+          </div>
         </div>
       </section>
 
-      {/* Gallery */}
       <section className="section-padding">
         <div className="container mx-auto">
-          {/* Filters */}
           <SectionReveal>
-            <div className="flex justify-center gap-2 mb-12 flex-wrap">
+            <div className="flex justify-center gap-0 mb-12 border border-border inline-flex mx-auto">
               {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setFilter(cat)}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                    filter === cat
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-muted"
-                  }`}
-                >
+                <button key={cat} onClick={() => setFilter(cat)} className={`px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${filter === cat ? "bg-primary text-primary-foreground" : "bg-background text-foreground hover:bg-secondary"}`}>
                   {cat}
                 </button>
               ))}
             </div>
           </SectionReveal>
 
-          {/* Grid */}
-          <motion.div layout className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+          <motion.div layout className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
             <AnimatePresence mode="popLayout">
               {filtered.map((img, i) => (
-                <motion.div
-                  key={img.alt}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="relative overflow-hidden rounded-2xl aspect-[4/3] group cursor-pointer"
-                  onClick={() => setLightbox(galleryImages.indexOf(img))}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                <motion.div key={img.alt} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }} className="relative overflow-hidden aspect-[4/3] group cursor-pointer" onClick={() => setLightbox(galleryImages.indexOf(img))}>
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
                 </motion.div>
               ))}
@@ -94,31 +68,13 @@ const GalleryPage = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-6"
-            onClick={() => setLightbox(null)}
-          >
-            <button
-              onClick={() => setLightbox(null)}
-              className="absolute top-6 right-6 text-primary-foreground p-2 hover:bg-primary-foreground/10 rounded-full transition-colors"
-            >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
+            <button onClick={() => setLightbox(null)} className="absolute top-6 right-6 text-primary-foreground p-2 hover:bg-primary-foreground/10 transition-colors">
               <X className="w-8 h-8" />
             </button>
-            <motion.img
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              src={galleryImages[lightbox].src}
-              alt={galleryImages[lightbox].alt}
-              className="max-w-full max-h-[85vh] rounded-2xl object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <motion.img initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} src={galleryImages[lightbox].src} alt={galleryImages[lightbox].alt} className="max-w-full max-h-[85vh] object-contain" onClick={(e) => e.stopPropagation()} />
           </motion.div>
         )}
       </AnimatePresence>

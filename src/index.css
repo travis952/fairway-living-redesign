@@ -34,7 +34,7 @@
     --input: 45 15% 85%;
     --ring: 142 72% 12%;
 
-    --radius: 1rem;
+    --radius: 0px;
 
     --sidebar-background: 45 20% 95%;
     --sidebar-foreground: 142 80% 5%;
@@ -45,11 +45,9 @@
     --sidebar-border: 45 15% 85%;
     --sidebar-ring: 142 72% 12%;
 
-    /* Custom tokens */
     --gold: 38 70% 50%;
     --gold-foreground: 38 90% 15%;
     --surface: 45 20% 92%;
-    --hero-overlay: 142 72% 12%;
   }
 }
 
@@ -81,13 +79,12 @@
     @apply px-6 py-20 md:px-12 lg:px-20 lg:py-28;
   }
 
-  .glass-card {
-    @apply bg-background/80 backdrop-blur-md rounded-2xl;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.02), 0 4px 6px -1px rgba(0,0,0,.04), 0 10px 15px -3px rgba(0,0,0,.03);
+  .sharp-card {
+    @apply bg-background border border-border;
   }
 
   .fairway-shadow {
-    box-shadow: 0 0 0 1px rgba(0,0,0,.02), 0 4px 6px -1px rgba(0,0,0,.04), 0 10px 15px -3px rgba(0,0,0,.03);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 6px 16px rgba(0,0,0,.04);
   }
 
   .text-display {
@@ -95,21 +92,8 @@
     font-weight: 600;
     letter-spacing: -0.02em;
   }
-}
 
-@layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .edge-line {
+    @apply w-16 h-[2px] bg-accent;
   }
 }
