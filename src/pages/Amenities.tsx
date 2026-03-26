@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionReveal from "@/components/SectionReveal";
+import ParallaxSection from "@/components/ParallaxSection";
 import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
 import fitnessCenter from "@/assets/fitness-center.jpg";
 import lakesidePatio from "@/assets/lakeside-patio.jpg";
@@ -21,31 +22,32 @@ const amenitiesList = [
 const AmenitiesPage = () => {
   return (
     <div>
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroCommunity} alt="Fairway Manor" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent pt-32 pb-12">
-          <div className="container mx-auto px-6">
-            <div className="edge-line mb-4" />
+      <ParallaxSection image={heroCommunity} alt="Fairway Manor" height="h-[60vh] min-h-[400px]">
+        <div className="container mx-auto px-6 flex items-end h-full pb-16">
+          <SectionReveal>
+            <p className="text-primary-foreground/60 text-xs uppercase tracking-[0.3em] mb-3">Community Features</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground">Amenities</h1>
-          </div>
+          </SectionReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <SectionReveal>
+            <SectionReveal direction="left">
               <div className="space-y-6">
                 <div className="edge-line" />
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">Your Community Hub</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">The Clubhouse is the gathering place for Fairway Manor Residents. Here you will find our Fitness Center, Laundry Center, Community Room, central mailboxes, and the Management & Leasing Office.</p>
-                <p className="text-muted-foreground text-lg leading-relaxed">In the Community Room you will find a Lending Library, Flat Screen TV, tables and chairs for cards and games, and our complimentary coffee station.</p>
+                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
+                  Your <span className="italic font-normal">Community</span> Hub
+                </h2>
+                <p className="text-muted-foreground text-base leading-relaxed">The Clubhouse is the gathering place for Fairway Manor Residents. Here you will find our Fitness Center, Laundry Center, Community Room, central mailboxes, and the Management & Leasing Office.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">In the Community Room you will find a Lending Library, Flat Screen TV, tables and chairs for cards and games, and our complimentary coffee station.</p>
               </div>
             </SectionReveal>
-            <SectionReveal delay={0.2}>
-              <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow" />
+            <SectionReveal direction="right" delay={0.2}>
+              <div className="relative group">
+                <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              </div>
             </SectionReveal>
           </div>
         </div>
@@ -61,8 +63,9 @@ const AmenitiesPage = () => {
             ].map((item, i) => (
               <SectionReveal key={item.label} delay={i * 0.1}>
                 <div className="relative overflow-hidden aspect-[4/3] group">
-                  <img src={item.img} alt={item.label} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/60 to-transparent p-6">
+                  <img src={item.img} alt={item.label} className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6">
                     <p className="text-primary-foreground font-display text-lg font-semibold">{item.label}</p>
                   </div>
                 </div>
@@ -77,13 +80,14 @@ const AmenitiesPage = () => {
           <SectionReveal>
             <div className="text-center mb-16">
               <div className="edge-line mx-auto mb-5" />
+              <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Features</p>
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">Community Features</h2>
             </div>
           </SectionReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {amenitiesList.map((a, i) => (
               <SectionReveal key={a.title} delay={i * 0.06}>
-                <div className="bg-background p-6 h-full">
+                <div className="bg-card p-6 lg:p-8 h-full feature-card-hover">
                   <div className="w-11 h-11 border border-accent/30 flex items-center justify-center mb-4">
                     <a.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
                   </div>
@@ -96,17 +100,19 @@ const AmenitiesPage = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-secondary">
-        <div className="container mx-auto text-center">
+      <ParallaxSection image={lakesidePatio} alt="Lakeside" height="h-[50vh]">
+        <div className="container mx-auto px-6">
           <SectionReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-6">Ready to See It All?</h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">Schedule a tour and experience Fairway Manor in person.</p>
-            <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
-              Schedule a Tour <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="text-center max-w-xl mx-auto">
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary-foreground mb-6">Ready to See It All?</h2>
+              <p className="text-primary-foreground/70 text-base mb-8">Schedule a tour and experience Fairway Manor in person.</p>
+              <Link to="/contact" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
+                Schedule a Tour <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </SectionReveal>
         </div>
-      </section>
+      </ParallaxSection>
     </div>
   );
 };
