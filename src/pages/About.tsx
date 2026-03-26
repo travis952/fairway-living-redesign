@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionReveal from "@/components/SectionReveal";
+import ParallaxSection from "@/components/ParallaxSection";
 import heroCommunity from "@/assets/hero-community.jpg";
 import aerialGrounds from "@/assets/aerial-grounds.jpg";
 import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
@@ -16,33 +17,34 @@ const values = [
 const AboutPage = () => {
   return (
     <div>
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroCommunity} alt="Fairway Manor aerial view" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent pt-32 pb-12">
-          <div className="container mx-auto px-6">
-            <div className="edge-line mb-4" />
+      <ParallaxSection image={heroCommunity} alt="Fairway Manor aerial view" height="h-[60vh] min-h-[400px]">
+        <div className="container mx-auto px-6 flex items-end h-full pb-16">
+          <SectionReveal>
+            <p className="text-primary-foreground/60 text-xs uppercase tracking-[0.3em] mb-3">Our Story</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground">About Us</h1>
-          </div>
+          </SectionReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <SectionReveal>
+            <SectionReveal direction="left">
               <div className="space-y-6">
                 <div className="edge-line" />
-                <p className="text-accent font-semibold text-sm uppercase tracking-[0.2em]">Our Story</p>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">A Legacy of Community Living</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">Fairway Manor is a premier senior rental community designed exclusively for active adults ages 55 and older. Nestled on 75 picturesque wooded acres in Patchogue, New York, our gated community offers a unique blend of natural beauty and modern convenience.</p>
-                <p className="text-muted-foreground text-lg leading-relaxed">The name "Fairway" reflects our connection to the traditions of excellence and leisure associated with the game of golf — the precision of well-maintained grounds, the camaraderie of community, and the pursuit of an active, fulfilling lifestyle.</p>
-                <p className="text-muted-foreground text-lg leading-relaxed">Our community features beautiful manicured landscaping, a scenic lake with fountain views, and a fully equipped clubhouse that serves as the heart of resident life.</p>
+                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">Welcome to Fairway Manor</p>
+                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
+                  A Legacy of <span className="italic font-normal">Community</span> Living
+                </h2>
+                <p className="text-muted-foreground text-base leading-relaxed">Fairway Manor is a premier senior rental community designed exclusively for active adults ages 55 and older. Nestled on 75 picturesque wooded acres in Patchogue, New York, our gated community offers a unique blend of natural beauty and modern convenience.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">The name "Fairway" reflects our connection to the traditions of excellence and leisure associated with the game of golf — the precision of well-maintained grounds, the camaraderie of community, and the pursuit of an active, fulfilling lifestyle.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">Our community features beautiful manicured landscaping, a scenic lake with fountain views, and a fully equipped clubhouse that serves as the heart of resident life.</p>
               </div>
             </SectionReveal>
-            <SectionReveal delay={0.2}>
-              <img src={aerialGrounds} alt="Fairway Manor grounds" className="w-full fairway-shadow" />
+            <SectionReveal direction="right" delay={0.2}>
+              <div className="relative group">
+                <img src={aerialGrounds} alt="Fairway Manor grounds" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              </div>
             </SectionReveal>
           </div>
         </div>
@@ -53,18 +55,19 @@ const AboutPage = () => {
           <SectionReveal>
             <div className="text-center mb-16">
               <div className="edge-line mx-auto mb-5" />
+              <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Our Values</p>
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">What We Stand For</h2>
             </div>
           </SectionReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {values.map((v, i) => (
               <SectionReveal key={v.title} delay={i * 0.1}>
-                <div className="bg-background p-8 text-center h-full">
+                <div className="bg-background p-8 text-center h-full feature-card-hover">
                   <div className="w-14 h-14 border border-accent/30 flex items-center justify-center mx-auto mb-5">
-                    <v.icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
+                    <v.icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display text-lg font-semibold text-primary mb-2">{v.title}</h3>
-                  <p className="text-muted-foreground text-base">{v.desc}</p>
+                  <p className="text-muted-foreground text-sm">{v.desc}</p>
                 </div>
               </SectionReveal>
             ))}
@@ -72,20 +75,26 @@ const AboutPage = () => {
         </div>
       </section>
 
+      <ParallaxSection image={lakesidePatio} alt="Lakeside view" height="h-[40vh]" />
+
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <SectionReveal>
-              <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow" />
+              <div className="relative group">
+                <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              </div>
             </SectionReveal>
-            <SectionReveal delay={0.2}>
+            <SectionReveal delay={0.2} direction="right">
               <div className="space-y-6">
                 <div className="edge-line" />
-                <p className="text-accent font-semibold text-sm uppercase tracking-[0.2em]">The Clubhouse</p>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">The Heart of Our Community</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">The Clubhouse is the gathering place for Fairway Manor residents. Here you'll find our Fitness Center, Laundry Center, Community Room, central mailboxes, and the Management & Leasing Office.</p>
-                <p className="text-muted-foreground text-lg leading-relaxed">The Community Room features a Lending Library, flat screen TV, game tables, and a complimentary coffee station.</p>
-                <Link to="/amenities" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300">
+                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">The Clubhouse</p>
+                <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
+                  The Heart of <span className="italic font-normal">Our Community</span>
+                </h2>
+                <p className="text-muted-foreground text-base leading-relaxed">The Clubhouse is the gathering place for Fairway Manor residents. Here you'll find our Fitness Center, Laundry Center, Community Room, central mailboxes, and the Management & Leasing Office.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">The Community Room features a Lending Library, flat screen TV, game tables, and a complimentary coffee station.</p>
+                <Link to="/amenities" className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all duration-300">
                   Explore Amenities <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -94,24 +103,20 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={lakesidePatio} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40" />
-        </div>
-        <div className="relative z-10 container mx-auto px-6">
+      <ParallaxSection image={aerialGrounds} alt="Fairway Manor" height="h-[50vh]">
+        <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="max-w-xl">
-              <div className="edge-line mb-6" style={{ backgroundColor: "hsl(var(--accent))" }} />
+              <div className="edge-line mb-6" />
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary-foreground mb-6">Come See For Yourself</h2>
-              <p className="text-primary-foreground/80 text-lg mb-8">Schedule a tour and discover why Fairway Manor is the best deal on Long Island for active adult communities.</p>
-              <Link to="/contact" className="bg-accent text-accent-foreground px-7 py-3.5 font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
+              <p className="text-primary-foreground/70 text-base mb-8">Schedule a tour and discover why Fairway Manor is the best deal on Long Island for active adult communities.</p>
+              <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
                 Schedule a Tour
               </Link>
             </div>
           </SectionReveal>
         </div>
-      </section>
+      </ParallaxSection>
     </div>
   );
 };
