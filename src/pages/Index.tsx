@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Trees, Dumbbell, Users, Home, MapPin, Star, ChevronDown } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import heroCommunity from "@/assets/hero-community.jpg";
@@ -29,30 +28,20 @@ const amenities = [
 ];
 
 const IndexPage = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: heroProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
-  const heroScale = useTransform(heroProgress, [0, 1], [1, 1.1]);
 
   return (
     <div>
       {/* Hero — Sticky parallax background */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden">
-        <motion.div
-          style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0 will-change-transform"
-        >
-          <img
-            src={heroCommunity}
-            alt="Aerial view of Fairway Manor community"
-            className="w-full h-[120%] object-cover"
-            width={1920}
-            height={1080}
-          />
-        </motion.div>
+      <section className="relative h-screen min-h-[700px]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${heroCommunity})`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/50" />
 
         {/* Hero text */}
@@ -332,26 +321,17 @@ const IndexPage = () => {
 
 /* Sticky parallax section — image stays fixed while content scrolls over */
 const StickyParallaxSection = ({ image, children }: { image: string; children: React.ReactNode }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-
   return (
-    <div ref={ref} className="relative overflow-hidden h-[60vh] min-h-[400px]">
-      <motion.div
-        style={{ y }}
-        className="absolute inset-[-10%] will-change-transform"
-      >
-        <img
-          src={image}
-          alt=""
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      </motion.div>
+    <div className="relative h-[60vh] min-h-[400px]">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
       <div className="absolute inset-0 bg-primary/40" />
       <div className="relative z-10 h-full flex items-center">
         {children}
