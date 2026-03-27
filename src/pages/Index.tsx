@@ -40,19 +40,16 @@ const IndexPage = () => {
   return (
     <div>
       {/* Hero — Sticky parallax background */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden">
-        <motion.div
-          style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0 will-change-transform"
-        >
-          <img
-            src={heroCommunity}
-            alt="Aerial view of Fairway Manor community"
-            className="w-full h-[120%] object-cover"
-            width={1920}
-            height={1080}
-          />
-        </motion.div>
+      <section ref={heroRef} className="relative h-screen min-h-[700px]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${heroCommunity})`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/50" />
 
         {/* Hero text */}
