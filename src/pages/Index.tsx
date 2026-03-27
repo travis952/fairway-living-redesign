@@ -28,13 +28,6 @@ const amenities = [
 ];
 
 const IndexPage = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: heroProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
-  const heroScale = useTransform(heroProgress, [0, 1], [1, 1.1]);
 
   return (
     <div>
