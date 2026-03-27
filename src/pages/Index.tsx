@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Trees, Dumbbell, Users, Home, MapPin, Star, ChevronDown } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import heroCommunity from "@/assets/hero-community.jpg";
