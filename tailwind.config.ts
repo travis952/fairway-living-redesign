@@ -59,6 +59,11 @@ export default {
         cream: "hsl(var(--cream))",
         charcoal: "hsl(var(--charcoal))",
         surface: "hsl(var(--surface))",
+        copper: {
+          DEFAULT: "hsl(var(--copper))",
+          light: "hsl(var(--copper-light))",
+        },
+        "warm-brown": "hsl(var(--warm-brown))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
