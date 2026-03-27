@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Trees, Dumbbell, Users, Home, MapPin, Star, ChevronDown } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
-import ParallaxSection from "@/components/ParallaxSection";
 import heroCommunity from "@/assets/hero-community.jpg";
 import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
 import fitnessCenter from "@/assets/fitness-center.jpg";
@@ -10,6 +10,8 @@ import lakesidePatio from "@/assets/lakeside-patio.jpg";
 import communityRoom from "@/assets/community-room.jpg";
 import apartmentInterior from "@/assets/apartment-interior.jpg";
 import aerialGrounds from "@/assets/aerial-grounds.jpg";
+import groundsParallax from "@/assets/grounds-parallax.jpg";
+import ctaParallax from "@/assets/cta-parallax.jpg";
 
 const featureCards = [
   { label: "See the Community", title: "Luxury Living", link: "/amenities", image: clubhouseInterior },
@@ -18,34 +20,40 @@ const featureCards = [
 ];
 
 const amenities = [
-  { icon: Trees, title: "75 Wooded Acres", desc: "Picturesque grounds with manicured landscaping and scenic lake views." },
-  { icon: Dumbbell, title: "Fitness Center", desc: "Fully equipped with treadmills, ellipticals, bikes, and flat screen TV." },
-  { icon: Users, title: "Community Room", desc: "Lending library, game tables, flat screen TV, and complimentary coffee." },
-  { icon: Home, title: "Private Entries", desc: "Every apartment features its own private entrance for comfort and privacy." },
-  { icon: MapPin, title: "Lakeside Patio", desc: "Tables, chairs, and barbecue grills overlooking the scenic lake." },
-  { icon: Star, title: "Pet Friendly", desc: "Bring your furry friends home. Breed and weight restrictions apply for dogs." },
+  { icon: Trees, title: "75 Wooded Acres", desc: "Picturesque grounds with manicured landscaping and scenic lake views.", image: aerialGrounds },
+  { icon: Dumbbell, title: "Fitness Center", desc: "Fully equipped with treadmills, ellipticals, bikes, and flat screen TV.", image: fitnessCenter },
+  { icon: Users, title: "Community Room", desc: "Lending library, game tables, flat screen TV, and complimentary coffee.", image: communityRoom },
+  { icon: Home, title: "Private Entries", desc: "Every apartment features its own private entrance for comfort and privacy.", image: apartmentInterior },
+  { icon: MapPin, title: "Lakeside Patio", desc: "Tables, chairs, and barbecue grills overlooking the scenic lake.", image: lakesidePatio },
+  { icon: Star, title: "Pet Friendly", desc: "Bring your furry friends home. Breed and weight restrictions apply for dogs.", image: clubhouseInterior },
 ];
 
 const IndexPage = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
+  const heroScale = useTransform(heroProgress, [0, 1], [1, 1.1]);
+
   return (
     <div>
-      {/* Hero — Full bleed with bottom feature cards */}
-      <section className="relative h-screen min-h-[700px]">
+      {/* Hero — Sticky parallax background */}
+      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden">
         <motion.div
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute inset-0"
+          style={{ y: heroY, scale: heroScale }}
+          className="absolute inset-0 will-change-transform"
         >
           <img
             src={heroCommunity}
             alt="Aerial view of Fairway Manor community"
-            className="w-full h-full object-cover"
+            className="w-full h-[120%] object-cover"
             width={1920}
             height={1080}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/50" />
 
         {/* Hero text */}
         <div className="absolute inset-0 flex items-center">
@@ -123,7 +131,7 @@ const IndexPage = () => {
                       {card.title}
                     </h3>
                     <ArrowRight className="w-4 h-4 text-primary-foreground/40 mt-3 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" />
-                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+                    <div className="absolute bottom-0 left-0 w-full h-[3px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
                   </Link>
                 </motion.div>
               ))}
@@ -177,8 +185,8 @@ const IndexPage = () => {
         </div>
       </section>
 
-      {/* Parallax Divider 1 */}
-      <ParallaxSection image={lakesidePatio} alt="Scenic lakeside view" height="h-[50vh]">
+      {/* Parallax Divider — 75 Acres (sticky background) */}
+      <StickyParallaxSection image={groundsParallax}>
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="max-w-lg">
@@ -191,9 +199,9 @@ const IndexPage = () => {
             </div>
           </SectionReveal>
         </div>
-      </ParallaxSection>
+      </StickyParallaxSection>
 
-      {/* Amenities Grid */}
+      {/* Amenities Grid — with images */}
       <section className="section-padding bg-secondary">
         <div className="container mx-auto">
           <SectionReveal>
@@ -205,15 +213,28 @@ const IndexPage = () => {
               </h2>
             </div>
           </SectionReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-1">
             {amenities.map((item, i) => (
               <SectionReveal key={item.title} delay={i * 0.08}>
-                <div className="bg-background p-8 lg:p-10 h-full group hover:bg-card transition-colors duration-500 feature-card-hover">
-                  <div className="w-12 h-12 border border-accent/30 flex items-center justify-center mb-6 group-hover:border-accent group-hover:bg-accent/5 transition-all duration-500">
-                    <item.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                <div className="relative group overflow-hidden h-full feature-card-hover">
+                  {/* Background image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/60 to-primary/30 group-hover:from-primary/95 group-hover:via-primary/70 transition-all duration-500" />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-primary mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                  {/* Content */}
+                  <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-end min-h-[280px]">
+                    <div className="w-12 h-12 border border-accent/40 flex items-center justify-center mb-6 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-500">
+                      <item.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">{item.title}</h3>
+                    <p className="text-primary-foreground/70 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </SectionReveal>
             ))}
@@ -231,18 +252,30 @@ const IndexPage = () => {
         </div>
       </section>
 
-      {/* Gallery Preview with rolling images */}
-      <section className="section-padding">
-        <div className="container mx-auto">
+      {/* Experience the Grounds — parallax background */}
+      <StickyParallaxSection image={lakesidePatio}>
+        <div className="container mx-auto px-6">
           <SectionReveal>
-            <div className="text-center mb-16">
+            <div className="text-center">
               <div className="edge-line mx-auto mb-5" />
-              <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Gallery</p>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-primary">
+              <p className="text-primary-foreground/80 text-sm uppercase tracking-[0.3em] mb-3">Gallery</p>
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-primary-foreground mb-8">
                 Experience the Grounds
               </h2>
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110"
+              >
+                View Full Gallery <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </SectionReveal>
+        </div>
+      </StickyParallaxSection>
+
+      {/* Gallery Grid */}
+      <section className="section-padding">
+        <div className="container mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
             {[aerialGrounds, lakesidePatio, fitnessCenter, communityRoom, apartmentInterior, clubhouseInterior].map((img, i) => (
               <SectionReveal key={i} delay={i * 0.06}>
@@ -258,21 +291,11 @@ const IndexPage = () => {
               </SectionReveal>
             ))}
           </div>
-          <SectionReveal delay={0.3}>
-            <div className="text-center mt-12">
-              <Link
-                to="/gallery"
-                className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all duration-300"
-              >
-                View Full Gallery <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </SectionReveal>
         </div>
       </section>
 
-      {/* Parallax CTA */}
-      <ParallaxSection image={aerialGrounds} alt="Fairway Manor aerial" height="h-[60vh]">
+      {/* Parallax CTA — sticky background */}
+      <StickyParallaxSection image={ctaParallax}>
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="max-w-xl">
@@ -302,7 +325,37 @@ const IndexPage = () => {
             </div>
           </SectionReveal>
         </div>
-      </ParallaxSection>
+      </StickyParallaxSection>
+    </div>
+  );
+};
+
+/* Sticky parallax section — image stays fixed while content scrolls over */
+const StickyParallaxSection = ({ image, children }: { image: string; children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  return (
+    <div ref={ref} className="relative overflow-hidden h-[60vh] min-h-[400px]">
+      <motion.div
+        style={{ y }}
+        className="absolute inset-[-10%] will-change-transform"
+      >
+        <img
+          src={image}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-primary/40" />
+      <div className="relative z-10 h-full flex items-center">
+        {children}
+      </div>
     </div>
   );
 };
