@@ -329,26 +329,17 @@ const IndexPage = () => {
 
 /* Sticky parallax section — image stays fixed while content scrolls over */
 const StickyParallaxSection = ({ image, children }: { image: string; children: React.ReactNode }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-
   return (
-    <div ref={ref} className="relative overflow-hidden h-[60vh] min-h-[400px]">
-      <motion.div
-        style={{ y }}
-        className="absolute inset-[-10%] will-change-transform"
-      >
-        <img
-          src={image}
-          alt=""
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      </motion.div>
+    <div className="relative h-[60vh] min-h-[400px]">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
       <div className="absolute inset-0 bg-primary/40" />
       <div className="relative z-10 h-full flex items-center">
         {children}
