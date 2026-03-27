@@ -32,7 +32,7 @@ const IndexPage = () => {
   return (
     <div>
       {/* Hero — Sticky parallax background */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px]">
+      <section className="relative h-screen min-h-[700px]">
         <div
           className="absolute inset-0"
           style={{
