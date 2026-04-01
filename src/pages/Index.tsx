@@ -1,50 +1,67 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Trees, Dumbbell, Users, Home, MapPin, Star, ChevronDown } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
+import clubhouseExterior from "@/assets/clubhouse-exterior.png";
+import clubhouseLounge from "@/assets/clubhouse-lounge.png";
+import clubhouseFitness from "@/assets/clubhouse-fitness.png";
+import bedroom1Living from "@/assets/1-bedroom-living.png";
+import bedroom2Terrace from "@/assets/2-bedroom-terrace.png";
 import heroCommunity from "@/assets/hero-community.jpg";
-import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
-import fitnessCenter from "@/assets/fitness-center.jpg";
-import lakesidePatio from "@/assets/lakeside-patio.jpg";
-import communityRoom from "@/assets/community-room.jpg";
-import apartmentInterior from "@/assets/apartment-interior.jpg";
-import aerialGrounds from "@/assets/aerial-grounds.jpg";
 import groundsParallax from "@/assets/grounds-parallax.jpg";
 import ctaParallax from "@/assets/cta-parallax.jpg";
+import lakesidePatio from "@/assets/lakeside-patio.jpg";
+import aerialGrounds from "@/assets/aerial-grounds.jpg";
 
 const featureCards = [
-  { label: "See the Community", title: "Luxury Living", link: "/amenities", image: clubhouseInterior },
-  { label: "Find Your Floorplan", title: "Thoughtful Interiors", link: "/floor-plans", image: apartmentInterior },
-  { label: "Explore the Grounds", title: "Experience It All", link: "/gallery", image: aerialGrounds },
+  { label: "See the Community", title: "Luxury Living", link: "/amenities", image: clubhouseLounge },
+  { label: "Find Your Floorplan", title: "Thoughtful Interiors", link: "/floor-plans", image: bedroom1Living },
+  { label: "Explore the Grounds", title: "Experience It All", link: "/gallery", image: clubhouseExterior },
 ];
 
 const amenities = [
-  { icon: Trees, title: "75 Wooded Acres", desc: "Picturesque grounds with manicured landscaping and scenic lake views.", image: aerialGrounds },
-  { icon: Dumbbell, title: "Fitness Center", desc: "Fully equipped with treadmills, ellipticals, bikes, and flat screen TV.", image: fitnessCenter },
-  { icon: Users, title: "Community Room", desc: "Lending library, game tables, flat screen TV, and complimentary coffee.", image: communityRoom },
-  { icon: Home, title: "Private Entries", desc: "Every apartment features its own private entrance for comfort and privacy.", image: apartmentInterior },
-  { icon: MapPin, title: "Lakeside Patio", desc: "Tables, chairs, and barbecue grills overlooking the scenic lake.", image: lakesidePatio },
-  { icon: Star, title: "Pet Friendly", desc: "Bring your furry friends home. Breed and weight restrictions apply for dogs.", image: clubhouseInterior },
+  { icon: Trees, title: "75 Wooded Acres", desc: "Picturesque grounds with manicured landscaping and scenic lake views.", image: clubhouseExterior },
+  { icon: Dumbbell, title: "Fitness Center", desc: "Fully equipped with treadmills, ellipticals, bikes, and flat screen TV.", image: clubhouseFitness },
+  { icon: Users, title: "Community Room", desc: "Lending library, game tables, flat screen TV, and complimentary coffee.", image: clubhouseLounge },
+  { icon: Home, title: "Private Entries", desc: "Every apartment features its own private entrance for comfort and privacy.", image: bedroom1Living },
+  { icon: MapPin, title: "Lakeside Patio", desc: "Tables, chairs, and barbecue grills overlooking the scenic lake.", image: clubhouseExterior },
+  { icon: Star, title: "Pet Friendly", desc: "Bring your furry friends home. Breed and weight restrictions apply for dogs.", image: bedroom2Terrace },
 ];
 
 const IndexPage = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768);
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const parallaxBg = (image: string) =>
+    isMobile
+      ? {}
+      : {
+          backgroundImage: `url(${image})`,
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        };
 
   return (
     <div>
       {/* Hero — Sticky parallax background */}
-      <section className="relative h-screen min-h-[700px]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${heroCommunity})`,
-            backgroundAttachment: 'fixed',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+      <section className="relative h-screen min-h-[700px] overflow-hidden">
+        {isMobile ? (
+          <img src={heroCommunity} alt="Fairway Manor community" className="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <div className="absolute inset-0" style={parallaxBg(heroCommunity)} />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/50" />
 
-        {/* Hero text */}
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-6">
             <motion.div
@@ -83,7 +100,6 @@ const IndexPage = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -98,7 +114,6 @@ const IndexPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Three Feature Cards at Bottom */}
         <div className="absolute bottom-0 left-0 right-0">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3">
@@ -159,8 +174,8 @@ const IndexPage = () => {
             <SectionReveal direction="right" delay={0.2}>
               <div className="relative group">
                 <img
-                  src={clubhouseInterior}
-                  alt="Fairway Manor Clubhouse Interior"
+                  src={clubhouseExterior}
+                  alt="Fairway Manor Clubhouse with lake"
                   className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
@@ -175,7 +190,7 @@ const IndexPage = () => {
       </section>
 
       {/* Parallax Divider — 75 Acres (sticky background) */}
-      <StickyParallaxSection image={groundsParallax}>
+      <StickyParallaxSection image={groundsParallax} isMobile={isMobile}>
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="max-w-lg">
@@ -206,7 +221,6 @@ const IndexPage = () => {
             {amenities.map((item, i) => (
               <SectionReveal key={item.title} delay={i * 0.08}>
                 <div className="relative group overflow-hidden h-full feature-card-hover">
-                  {/* Background image */}
                   <div className="absolute inset-0">
                     <img
                       src={item.image}
@@ -216,7 +230,6 @@ const IndexPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/60 to-primary/30 group-hover:from-primary/95 group-hover:via-primary/70 transition-all duration-500" />
                   </div>
-                  {/* Content */}
                   <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-end min-h-[280px]">
                     <div className="w-12 h-12 border border-accent/40 flex items-center justify-center mb-6 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-500">
                       <item.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
@@ -242,7 +255,7 @@ const IndexPage = () => {
       </section>
 
       {/* Experience the Grounds — parallax background */}
-      <StickyParallaxSection image={lakesidePatio}>
+      <StickyParallaxSection image={lakesidePatio} isMobile={isMobile}>
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="text-center">
@@ -266,7 +279,7 @@ const IndexPage = () => {
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
-            {[aerialGrounds, lakesidePatio, fitnessCenter, communityRoom, apartmentInterior, clubhouseInterior].map((img, i) => (
+            {[clubhouseExterior, clubhouseLounge, clubhouseFitness, bedroom1Living, bedroom2Terrace, aerialGrounds].map((img, i) => (
               <SectionReveal key={i} delay={i * 0.06}>
                 <div className="relative overflow-hidden group aspect-[4/3]">
                   <img
@@ -284,7 +297,7 @@ const IndexPage = () => {
       </section>
 
       {/* Parallax CTA — sticky background */}
-      <StickyParallaxSection image={ctaParallax}>
+      <StickyParallaxSection image={ctaParallax} isMobile={isMobile}>
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="max-w-xl">
@@ -320,18 +333,22 @@ const IndexPage = () => {
 };
 
 /* Sticky parallax section — image stays fixed while content scrolls over */
-const StickyParallaxSection = ({ image, children }: { image: string; children: React.ReactNode }) => {
+const StickyParallaxSection = ({ image, children, isMobile }: { image: string; children: React.ReactNode; isMobile: boolean }) => {
   return (
-    <div className="relative h-[60vh] min-h-[400px]">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
+    <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      {isMobile ? (
+        <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      )}
       <div className="absolute inset-0 bg-primary/40" />
       <div className="relative z-10 h-full flex items-center">
         {children}

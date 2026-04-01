@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
-import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
-import fitnessCenter from "@/assets/fitness-center.jpg";
-import lakesidePatio from "@/assets/lakeside-patio.jpg";
-import communityRoom from "@/assets/community-room.jpg";
+import clubhouseLounge from "@/assets/clubhouse-lounge.png";
+import clubhouseFitness from "@/assets/clubhouse-fitness.png";
+import clubhouseExterior from "@/assets/clubhouse-exterior.png";
 import heroCommunity from "@/assets/hero-community.jpg";
 import { Trees, Dumbbell, BookOpen, UtensilsCrossed, Dog, Mail, ShieldCheck, Wifi, ArrowRight } from "lucide-react";
 
@@ -46,7 +45,7 @@ const AmenitiesPage = () => {
             </SectionReveal>
             <SectionReveal direction="right" delay={0.2}>
               <div className="relative group">
-                <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                <img src={clubhouseLounge} alt="Clubhouse lounge with billiards" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
               </div>
             </SectionReveal>
           </div>
@@ -57,9 +56,9 @@ const AmenitiesPage = () => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-1">
             {[
-              { img: fitnessCenter, label: "Fitness Center" },
-              { img: communityRoom, label: "Community Room" },
-              { img: lakesidePatio, label: "Lakeside Patio" },
+              { img: clubhouseFitness, label: "Fitness Center" },
+              { img: clubhouseLounge, label: "Community Room" },
+              { img: clubhouseExterior, label: "Lakeside Patio" },
             ].map((item, i) => (
               <SectionReveal key={item.label} delay={i * 0.1}>
                 <div className="relative overflow-hidden aspect-[4/3] group">
@@ -100,7 +99,7 @@ const AmenitiesPage = () => {
         </div>
       </section>
 
-      <ParallaxSection image={lakesidePatio} alt="Lakeside" height="h-[50vh]">
+      <ParallaxSection image={clubhouseExterior} alt="Lakeside" height="h-[50vh]">
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="text-center max-w-xl mx-auto">
