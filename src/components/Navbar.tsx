@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, MapPin, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -32,30 +32,23 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Info Bar */}
+      {/* Top Info Bar — Schedule Now button instead of address */}
       <div className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
         isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-auto opacity-100"
       }`}>
         <div className="bg-primary text-primary-foreground">
           <div className="container mx-auto flex items-center justify-between px-6 py-2">
-            <div className="flex items-center gap-6 text-xs tracking-wide">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3 h-3 opacity-70" />
-                600 Clubhouse Drive, Patchogue, NY 11772
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="tel:16313635760" className="flex items-center gap-1.5 text-xs tracking-wide hover:text-accent transition-colors">
-                <Phone className="w-3 h-3 opacity-70" />
-                (631) 363-5760
-              </a>
-              <Link
-                to="/contact"
-                className="hidden sm:inline-block text-xs tracking-widest uppercase font-semibold hover:text-accent transition-colors"
-              >
-                Book a Tour
-              </Link>
-            </div>
+            <a href="tel:16313635760" className="flex items-center gap-1.5 text-xs tracking-wide hover:text-accent transition-colors">
+              <Phone className="w-3 h-3 opacity-70" />
+              (631) 363-5760
+            </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase font-semibold bg-accent text-accent-foreground px-4 py-1.5 hover:brightness-110 transition-all"
+            >
+              <Calendar className="w-3 h-3" />
+              Schedule Now
+            </Link>
           </div>
         </div>
       </div>
@@ -162,8 +155,8 @@ const Navbar = () => {
                     <Phone className="w-4 h-4 text-accent" />
                     (631) 363-5760
                   </a>
-                  <Link to="/contact" className="bg-accent text-accent-foreground px-5 py-3 text-center font-semibold text-sm uppercase tracking-wider mt-2">
-                    Schedule Tour
+                  <Link to="/contact" className="bg-accent text-accent-foreground px-5 py-3 text-center font-semibold text-sm uppercase tracking-wider mt-2 flex items-center justify-center gap-2">
+                    <Calendar className="w-4 h-4" /> Book Now
                   </Link>
                 </div>
               </nav>

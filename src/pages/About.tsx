@@ -3,8 +3,8 @@ import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
 import heroCommunity from "@/assets/hero-community.jpg";
 import aerialGrounds from "@/assets/aerial-grounds.jpg";
-import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
-import lakesidePatio from "@/assets/lakeside-patio.jpg";
+import clubhouseLounge from "@/assets/clubhouse-lounge.png";
+import clubhouseExterior from "@/assets/clubhouse-exterior.png";
 import { ArrowRight, Heart, Shield, Users, Leaf } from "lucide-react";
 
 const values = [
@@ -43,7 +43,7 @@ const AboutPage = () => {
             </SectionReveal>
             <SectionReveal direction="right" delay={0.2}>
               <div className="relative group">
-                <img src={aerialGrounds} alt="Fairway Manor grounds" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                <img src={clubhouseExterior} alt="Fairway Manor clubhouse with lake" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
               </div>
             </SectionReveal>
           </div>
@@ -75,14 +75,14 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <ParallaxSection image={lakesidePatio} alt="Lakeside view" height="h-[40vh]" />
+      <ParallaxSection image={clubhouseExterior} alt="Lakeside view" height="h-[40vh]" />
 
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <SectionReveal>
               <div className="relative group">
-                <img src={clubhouseInterior} alt="Clubhouse interior" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                <img src={clubhouseLounge} alt="Clubhouse lounge" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
               </div>
             </SectionReveal>
             <SectionReveal delay={0.2} direction="right">

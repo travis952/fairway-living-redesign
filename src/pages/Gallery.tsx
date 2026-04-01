@@ -2,25 +2,31 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
-import heroCommunity from "@/assets/hero-community.jpg";
-import clubhouseInterior from "@/assets/clubhouse-interior.jpg";
-import fitnessCenter from "@/assets/fitness-center.jpg";
-import lakesidePatio from "@/assets/lakeside-patio.jpg";
-import communityRoom from "@/assets/community-room.jpg";
-import apartmentInterior from "@/assets/apartment-interior.jpg";
 import aerialGrounds from "@/assets/aerial-grounds.jpg";
-import buildingExterior from "@/assets/building-exterior.jpg";
+import clubhouseLounge from "@/assets/clubhouse-lounge.png";
+import clubhouseExterior from "@/assets/clubhouse-exterior.png";
+import clubhouseFitness from "@/assets/clubhouse-fitness.png";
+import bedroom1 from "@/assets/1-bedroom.png";
+import bedroom1Kitchen from "@/assets/1-bedroom-kitchen.png";
+import bedroom1Living from "@/assets/1-bedroom-living.png";
+import bedroom2 from "@/assets/2-bedroom.png";
+import bedroom2Kitchen from "@/assets/2-bedroom-kitchen.png";
+import bedroom2Living from "@/assets/2-bedroom-living.png";
+import bedroom2Terrace from "@/assets/2-bedroom-terrace.png";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryImages = [
-  { src: heroCommunity, alt: "Aerial view of Fairway Manor community", category: "Grounds" },
+  { src: clubhouseExterior, alt: "Clubhouse exterior with lake and swans", category: "Grounds" },
   { src: aerialGrounds, alt: "Aerial view of wooded acres and lake", category: "Grounds" },
-  { src: clubhouseInterior, alt: "Clubhouse interior lounge", category: "Clubhouse" },
-  { src: communityRoom, alt: "Community room with library", category: "Clubhouse" },
-  { src: fitnessCenter, alt: "Fitness center equipment", category: "Clubhouse" },
-  { src: lakesidePatio, alt: "Lakeside patio with BBQ", category: "Grounds" },
-  { src: apartmentInterior, alt: "Modern apartment interior", category: "Apartments" },
-  { src: buildingExterior, alt: "Building exterior with landscaping", category: "Apartments" },
+  { src: clubhouseLounge, alt: "Clubhouse lounge with billiards", category: "Clubhouse" },
+  { src: clubhouseFitness, alt: "Fairway Manor Fitness Center", category: "Clubhouse" },
+  { src: bedroom1, alt: "1 Bedroom apartment", category: "Apartments" },
+  { src: bedroom1Kitchen, alt: "1 Bedroom kitchen", category: "Apartments" },
+  { src: bedroom1Living, alt: "1 Bedroom living room", category: "Apartments" },
+  { src: bedroom2, alt: "2 Bedroom luxury apartment", category: "Apartments" },
+  { src: bedroom2Kitchen, alt: "2 Bedroom luxury kitchen with laundry", category: "Apartments" },
+  { src: bedroom2Living, alt: "2 Bedroom luxury living room", category: "Apartments" },
+  { src: bedroom2Terrace, alt: "2 Bedroom luxury private terrace", category: "Apartments" },
 ];
 
 const categories = ["All", "Grounds", "Clubhouse", "Apartments"];
@@ -51,7 +57,7 @@ const GalleryPage = () => {
         <div className="container mx-auto">
           <SectionReveal>
             <div className="flex justify-center mb-12">
-              <div className="inline-flex border border-border">
+              <div className="inline-flex border border-border flex-wrap">
                 {categories.map((cat) => (
                   <button key={cat} onClick={() => setFilter(cat)} className={`px-6 py-3 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${filter === cat ? "bg-primary text-primary-foreground" : "bg-background text-foreground hover:bg-secondary"}`}>
                     {cat}
