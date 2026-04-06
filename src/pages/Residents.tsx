@@ -2,7 +2,7 @@ import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
 import communityRoom from "@/assets/community-room.jpg";
 import lakesidePatio from "@/assets/lakeside-patio.jpg";
-import { ExternalLink, Users, MessageSquare, Star } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 
 const ResidentsPage = () => {
   return (
@@ -30,23 +30,6 @@ const ResidentsPage = () => {
             </div>
           </SectionReveal>
 
-          <div className="grid sm:grid-cols-3 gap-px bg-border mb-20">
-            {[
-              { icon: Users, title: "Community Board", desc: "Connect with neighbors, share updates, and stay informed." },
-              { icon: MessageSquare, title: "Maintenance Requests", desc: "Submit and track maintenance requests through the portal." },
-              { icon: Star, title: "Share Experiences", desc: "Share your Fairway Manor experience with the community." },
-            ].map((item, i) => (
-              <SectionReveal key={item.title} delay={i * 0.1}>
-                <div className="bg-card p-8 text-center h-full feature-card-hover">
-                  <div className="w-14 h-14 bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                    <item.icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-primary mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.desc}</p>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
 
           <ParallaxSection image={lakesidePatio} alt="Lakeside" height="h-[30vh]" />
 
