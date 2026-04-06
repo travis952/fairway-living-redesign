@@ -5,18 +5,8 @@ import clubhouseLounge from "@/assets/clubhouse-lounge.png";
 import clubhouseFitness from "@/assets/clubhouse-fitness.png";
 import clubhouseExterior from "@/assets/clubhouse-exterior.png";
 import heroCommunity from "@/assets/hero-community.jpg";
-import { Trees, Dumbbell, BookOpen, UtensilsCrossed, Dog, Mail, ShieldCheck, Wifi, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const amenitiesList = [
-  { icon: Trees, title: "75 Wooded Acres", desc: "Picturesque grounds with manicured landscaping and a scenic lake with fountain." },
-  { icon: Dumbbell, title: "Fitness Center", desc: "Treadmills, ellipticals, bikes, flat screen TV on the lower level of the Clubhouse." },
-  { icon: BookOpen, title: "Lending Library", desc: "Browse and borrow from our community library in the Clubhouse Community Room." },
-  { icon: UtensilsCrossed, title: "Lakeside Patio & BBQ", desc: "Outdoor tables, chairs, and barbecue grills overlooking the scenic lake." },
-  { icon: Mail, title: "Central Mail Center", desc: "Convenient central mailbox pickup located in the Clubhouse." },
-  { icon: Dog, title: "Pet Friendly", desc: "Bring your furry friends! Breed and weight restrictions apply for dogs." },
-  { icon: ShieldCheck, title: "Gated Community", desc: "Secure gated entrance and well-maintained community grounds." },
-  { icon: Wifi, title: "Cable & Phone Ready", desc: "All apartments pre-wired for telephone and cable service." },
-];
 
 const AmenitiesPage = () => {
   return (
