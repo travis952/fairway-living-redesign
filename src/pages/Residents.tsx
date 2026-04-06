@@ -2,7 +2,7 @@ import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
 import communityRoom from "@/assets/community-room.jpg";
 import lakesidePatio from "@/assets/lakeside-patio.jpg";
-import { ExternalLink, Users, MessageSquare, Star } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 
 const ResidentsPage = () => {
   return (
