@@ -11,7 +11,12 @@ import bedroom2 from "@/assets/2-bedroom.png";
 import bedroom2Kitchen from "@/assets/2-bedroom-kitchen.png";
 import bedroom2Living from "@/assets/2-bedroom-living.png";
 import bedroom2Terrace from "@/assets/2-bedroom-terrace.png";
-import { ArrowRight, Check, Calendar, X, ChevronLeft, ChevronRight } from "lucide-react";
+import fpStandard1F from "@/assets/fp-standard-1f.png";
+import fpStandard2F from "@/assets/fp-standard-2f.png";
+import fpLuxuryA from "@/assets/fp-luxury-a.png";
+import fpLuxuryB from "@/assets/fp-luxury-b.png";
+import floorPlanAll from "@/assets/floor-plans-all.png";
+import { ArrowRight, Check, Calendar, X, ChevronLeft, ChevronRight, Download } from "lucide-react";
 
 const standardFeatures = [
   "Private Entry",
@@ -38,6 +43,16 @@ const luxuryFeatures = [
   "Intercoms for 2nd Floor Apartments",
 ];
 
+const standardFloorPlans = [
+  { src: fpStandard1F, label: "Standard 1-2 Bedroom", sub: "First Floor" },
+  { src: fpStandard2F, label: "Standard 1-2 Bedroom", sub: "Second Floor" },
+];
+
+const luxuryFloorPlans = [
+  { src: fpLuxuryA, label: 'Luxury 2-Bedroom "A"', sub: "First Floor" },
+  { src: fpLuxuryB, label: 'Luxury 2-Bedroom "B"', sub: "Second Floor" },
+];
+
 const standardPhotos = [
   { src: bedroom1, alt: "1 Bedroom - Bedroom" },
   { src: bedroom1Kitchen, alt: "1 Bedroom - Kitchen" },
@@ -55,14 +70,38 @@ type PlanTab = "standard" | "luxury";
 
 const FloorPlansPage = () => {
   const [activeTab, setActiveTab] = useState<PlanTab>("standard");
-  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<{ type: "photo" | "plan"; index: number } | null>(null);
 
   const currentPhotos = activeTab === "standard" ? standardPhotos : luxuryPhotos;
+  const currentPlans = activeTab === "standard" ? standardFloorPlans : luxuryFloorPlans;
+
+  const allLightboxItems = [
+    ...currentPlans.map((p) => ({ src: p.src, alt: `${p.label} - ${p.sub}` })),
+    ...currentPhotos,
+  ];
+
+  const currentLightboxIndex = lightbox
+    ? lightbox.type === "plan"
+      ? lightbox.index
+      : currentPlans.length + lightbox.index
+    : -1;
 
   const navigateLightbox = (dir: number) => {
-    if (lightbox === null) return;
-    const newIndex = lightbox + dir;
-    if (newIndex >= 0 && newIndex < currentPhotos.length) setLightbox(newIndex);
+    const newIdx = currentLightboxIndex + dir;
+    if (newIdx >= 0 && newIdx < allLightboxItems.length) {
+      if (newIdx < currentPlans.length) {
+        setLightbox({ type: "plan", index: newIdx });
+      } else {
+        setLightbox({ type: "photo", index: newIdx - currentPlans.length });
+      }
+    }
+  };
+
+  const handleDownloadPdf = () => {
+    const link = document.createElement("a");
+    link.href = floorPlanAll;
+    link.download = "Fairway-Manor-Floor-Plans.png";
+    link.click();
   };
 
   return (
@@ -94,6 +133,46 @@ const FloorPlansPage = () => {
                 </button>
                 <button onClick={() => { setActiveTab("luxury"); setLightbox(null); }} className={`px-8 py-3.5 font-semibold text-sm uppercase tracking-wider transition-all duration-300 ${activeTab === "luxury" ? "bg-primary text-primary-foreground" : "bg-background text-foreground hover:bg-secondary"}`}>
                   2 Bed Luxury
+                </button>
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* Floor Plan Images */}
+          <SectionReveal delay={0.15}>
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Floor Plans</p>
+                <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary">
+                  {activeTab === "standard" ? "Standard Apartment Layouts" : "Luxury Apartment Layouts"}
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {currentPlans.map((plan, i) => (
+                  <motion.div
+                    key={plan.label + plan.sub}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="border border-border bg-card overflow-hidden group cursor-pointer"
+                    onClick={() => setLightbox({ type: "plan", index: i })}
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden bg-white p-4">
+                      <img src={plan.src} alt={`${plan.label} - ${plan.sub}`} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                    </div>
+                    <div className="p-5 border-t border-border">
+                      <h4 className="font-display text-lg font-semibold text-primary">{plan.label}</h4>
+                      <p className="text-muted-foreground text-sm">{plan.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="text-center mt-6">
+                <button
+                  onClick={handleDownloadPdf}
+                  className="inline-flex items-center gap-2 border border-accent text-accent px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+                >
+                  <Download className="w-4 h-4" /> Download Floor Plans
                 </button>
               </div>
             </div>
@@ -145,7 +224,7 @@ const FloorPlansPage = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
                     className="relative overflow-hidden aspect-[4/3] group cursor-pointer"
-                    onClick={() => setLightbox(i)}
+                    onClick={() => setLightbox({ type: "photo", index: i })}
                   >
                     <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" loading="lazy" />
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500" />
@@ -173,7 +252,7 @@ const FloorPlansPage = () => {
 
       {/* Lightbox */}
       <AnimatePresence>
-        {lightbox !== null && (
+        {lightbox !== null && currentLightboxIndex >= 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -184,18 +263,18 @@ const FloorPlansPage = () => {
             <button onClick={() => setLightbox(null)} className="absolute top-6 right-6 text-primary-foreground/70 hover:text-primary-foreground p-2 transition-colors z-10">
               <X className="w-8 h-8" />
             </button>
-            {lightbox > 0 && (
+            {currentLightboxIndex > 0 && (
               <button onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }} className="absolute left-6 top-1/2 -translate-y-1/2 text-primary-foreground/50 hover:text-primary-foreground p-2 transition-colors z-10">
                 <ChevronLeft className="w-8 h-8" />
               </button>
             )}
-            {lightbox < currentPhotos.length - 1 && (
+            {currentLightboxIndex < allLightboxItems.length - 1 && (
               <button onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }} className="absolute right-6 top-1/2 -translate-y-1/2 text-primary-foreground/50 hover:text-primary-foreground p-2 transition-colors z-10">
                 <ChevronRight className="w-8 h-8" />
               </button>
             )}
             <motion.div
-              key={lightbox}
+              key={currentLightboxIndex}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -204,11 +283,11 @@ const FloorPlansPage = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={currentPhotos[lightbox].src}
-                alt={currentPhotos[lightbox].alt}
-                className="w-full max-h-[85vh] object-contain"
+                src={allLightboxItems[currentLightboxIndex].src}
+                alt={allLightboxItems[currentLightboxIndex].alt}
+                className={`w-full max-h-[85vh] ${lightbox.type === "plan" ? "object-contain bg-white p-4" : "object-contain"}`}
               />
-              <p className="text-primary-foreground/70 text-sm text-center mt-4">{currentPhotos[lightbox].alt}</p>
+              <p className="text-primary-foreground/70 text-sm text-center mt-4">{allLightboxItems[currentLightboxIndex].alt}</p>
             </motion.div>
           </motion.div>
         )}
