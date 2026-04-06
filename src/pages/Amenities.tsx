@@ -74,30 +74,6 @@ const AmenitiesPage = () => {
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="container mx-auto">
-          <SectionReveal>
-            <div className="text-center mb-16">
-              <div className="edge-line mx-auto mb-5" />
-              <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Features</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">Community Features</h2>
-            </div>
-          </SectionReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-            {amenitiesList.map((a, i) => (
-              <SectionReveal key={a.title} delay={i * 0.06}>
-                <div className="bg-card p-6 lg:p-8 h-full feature-card-hover">
-                  <div className="w-11 h-11 border border-accent/30 flex items-center justify-center mb-4">
-                    <a.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-primary mb-2">{a.title}</h3>
-                  <p className="text-muted-foreground text-sm">{a.desc}</p>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <ParallaxSection image={clubhouseExterior} alt="Lakeside" height="h-[50vh]">
         <div className="container mx-auto px-6">

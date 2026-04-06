@@ -78,14 +78,16 @@ const JournalPage = () => {
             ))}
           </div>
 
-          {/* Newsletter */}
+          {/* Connect Form */}
           <SectionReveal delay={0.3}>
             <div className="border border-border bg-card p-10 mt-16 text-center">
-              <h3 className="font-display text-2xl font-semibold text-primary mb-3">Stay in the Loop</h3>
-              <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">Subscribe to the Fairway Journal for community updates.</p>
-              <div className="flex flex-col sm:flex-row gap-0 max-w-md mx-auto">
-                <input type="email" placeholder="Your email address" className="flex-1 px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border border-r-0 focus:outline-none focus:border-accent text-sm" />
-                <button className="bg-accent text-accent-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 whitespace-nowrap">Subscribe</button>
+              <h3 className="font-display text-2xl font-semibold text-primary mb-3">Like to Connect?</h3>
+              <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">Share your details and we'll keep you updated with community news.</p>
+              <div className="flex flex-col gap-3 max-w-md mx-auto">
+                <input type="text" placeholder="Your name" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
+                <input type="email" placeholder="Your email address" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
+                <input type="tel" placeholder="Your phone number" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
+                <button className="bg-accent text-accent-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 whitespace-nowrap">Connect</button>
               </div>
             </div>
           </SectionReveal>

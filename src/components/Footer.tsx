@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="border-b border-primary-foreground/10">
         <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-display text-2xl font-semibold mb-1">Stay Connected</h3>
+            <h3 className="font-display text-2xl font-semibold mb-1">Like to Connect</h3>
             <p className="text-primary-foreground/60 text-sm">Get community updates delivered to your inbox.</p>
           </div>
           <div className="flex w-full md:w-auto gap-0">
@@ -18,7 +18,7 @@ const Footer = () => {
               className="flex-1 md:w-72 px-5 py-3 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40 border border-primary-foreground/20 border-r-0 focus:outline-none focus:border-accent text-sm"
             />
             <button className="bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:brightness-110 transition-all whitespace-nowrap">
-              Subscribe
+              Connect
             </button>
           </div>
         </div>
