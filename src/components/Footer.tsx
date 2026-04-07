@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin, Clock, ArrowRight, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -28,9 +29,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-5">
-            <h3 className="font-display text-2xl font-semibold">
-              Fairway<span className="font-light text-primary-foreground/60"> Manor</span>
-            </h3>
+            <img src={logo} alt="Fairway Manor Apartments" className="h-12" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               A premier senior rental community for ages 55 and older, nestled on 75 picturesque wooded acres in Patchogue, NY.
             </p>
