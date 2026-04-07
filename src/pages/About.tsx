@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SectionReveal from "@/components/SectionReveal";
 import ParallaxSection from "@/components/ParallaxSection";
 import heroCommunity from "@/assets/hero-community.jpg";
+import aboutSign from "@/assets/about-sign.png";
 import aerialGrounds from "@/assets/aerial-grounds.jpg";
 import clubhouseLounge from "@/assets/clubhouse-lounge.png";
 import clubhouseExterior from "@/assets/clubhouse-exterior.png";
@@ -32,18 +33,18 @@ const AboutPage = () => {
             <SectionReveal direction="left">
               <div className="space-y-6">
                 <div className="edge-line" />
-                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">Welcome to Fairway Manor</p>
+                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">Welcome to Fairway Manor Apartments</p>
                 <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
                   A Legacy of <span className="italic font-normal">Community</span> Living
                 </h2>
-                <p className="text-muted-foreground text-base leading-relaxed">Fairway Manor is a premier senior rental community designed exclusively for active adults ages 55 and older. Nestled on 75 picturesque wooded acres in Patchogue, New York, our gated community offers a unique blend of natural beauty and modern convenience.</p>
-                <p className="text-muted-foreground text-base leading-relaxed">The name "Fairway" reflects our connection to the traditions of excellence and leisure associated with the game of golf — the precision of well-maintained grounds, the camaraderie of community, and the pursuit of an active, fulfilling lifestyle.</p>
-                <p className="text-muted-foreground text-base leading-relaxed">Our community features beautiful manicured landscaping, a scenic lake with fountain views, and a fully equipped clubhouse that serves as the heart of resident life.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">Fairway Manor is senior rental community for ages 55 and older. Our gated community is situated on 75 picturesque wooded acres, has beautiful manicured landscaping, and a patio with barbecue grills that overlooks a scenic lake.</p>
+                <p className="text-muted-foreground text-base leading-relaxed">Fairway Manor's Clubhouse is complete with a Laundry Center and Community Room for an assortment of activities, Central mail pick up, and a Fitness Center.</p>
+                <p className="text-muted-foreground text-base leading-relaxed font-semibold text-primary">Make Fairway Manor your new home!</p>
               </div>
             </SectionReveal>
             <SectionReveal direction="right" delay={0.2}>
               <div className="relative group">
-                <img src={clubhouseExterior} alt="Fairway Manor clubhouse with lake" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                <img src={aboutSign} alt="Fairway Manor Apartments sign" className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
               </div>
             </SectionReveal>
           </div>
