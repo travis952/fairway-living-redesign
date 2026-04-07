@@ -9,6 +9,7 @@ import clubhouseFitness from "@/assets/clubhouse-fitness.png";
 import bedroom1Living from "@/assets/1-bedroom-living.png";
 import bedroom2Terrace from "@/assets/2-bedroom-terrace.png";
 import heroCommunity from "@/assets/hero-community.jpg";
+import aboutSign from "@/assets/about-sign.png";
 import groundsParallax from "@/assets/grounds-parallax.jpg";
 import ctaParallax from "@/assets/cta-parallax.jpg";
 import lakesidePatio from "@/assets/lakeside-patio.jpg";
