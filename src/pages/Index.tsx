@@ -151,17 +151,17 @@ const IndexPage = () => {
             <SectionReveal direction="left">
               <div className="space-y-6">
                 <div className="edge-line" />
-                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">Welcome Home</p>
+                <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em]">Welcome to Fairway Manor Apartments</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-primary leading-tight">
                   Feel at Home.
                   <br />
                   <span className="italic font-normal text-accent">Live the way</span> you've always wanted.
                 </h2>
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  Fairway Manor is a senior rental community for ages 55 and older. Our gated community is situated on 75 picturesque wooded acres, has beautiful manicured landscaping, and a patio with barbecue grills that overlooks a scenic lake.
+                  Fairway Manor is senior rental community for ages 55 and older. Our gated community is situated on 75 picturesque wooded acres, has beautiful manicured landscaping, and a patio with barbecue grills that overlooks a scenic lake.
                 </p>
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  Our Clubhouse is complete with a Laundry Center and Community Room for an assortment of activities, Central mail pick up, and a Fitness Center. Make Fairway Manor your new home!
+                  Fairway Manor's Clubhouse is complete with a Laundry Center and Community Room for an assortment of activities, Central mail pick up, and a Fitness Center. Make Fairway Manor your new home!
                 </p>
                 <Link
                   to="/about"
