@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -63,14 +64,13 @@ const Navbar = () => {
       >
         <div className="container mx-auto flex items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2 group">
-            <span className={`font-display text-2xl font-semibold tracking-tight transition-colors duration-500 ${
-              isScrolled ? "text-primary" : "text-primary-foreground"
-            }`}>
-              Fairway
-              <span className={`font-light transition-colors duration-500 ${
-                isScrolled ? "text-accent" : "text-primary-foreground/70"
-              }`}> Manor</span>
-            </span>
+            <img
+              src={logo}
+              alt="Fairway Manor Apartments"
+              className={`transition-all duration-500 ${
+                isScrolled ? "h-10" : "h-14"
+              }`}
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
