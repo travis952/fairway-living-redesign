@@ -175,8 +175,8 @@ const IndexPage = () => {
             <SectionReveal direction="right" delay={0.2}>
               <div className="relative group">
                 <img
-                  src={clubhouseExterior}
-                  alt="Fairway Manor Clubhouse with lake"
+                  src={aboutSign}
+                  alt="Fairway Manor Apartments sign"
                   className="w-full fairway-shadow transition-transform duration-700 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
