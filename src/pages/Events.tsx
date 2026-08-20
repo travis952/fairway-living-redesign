@@ -29,8 +29,8 @@ const cats: EventCategory[] = ["All", "Social", "Fitness", "Wellness", "Arts"];
 const categoryColors: Record<string, string> = {
   Social: "bg-accent/10 text-accent",
   Fitness: "bg-primary/10 text-primary",
-  Wellness: "bg-gold/10 text-gold-foreground",
-  Arts: "bg-sage/20 text-foreground",
+  Wellness: "bg-accent/15 text-accent",
+  Arts: "bg-muted text-foreground",
 };
 
 const EventsPage = () => {

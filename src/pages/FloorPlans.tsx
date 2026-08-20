@@ -157,7 +157,7 @@ const FloorPlansPage = () => {
                     className="border border-border bg-card overflow-hidden group cursor-pointer"
                     onClick={() => setLightbox({ type: "plan", index: i })}
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-white p-4">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-cream p-4">
                       <img src={plan.src} alt={`${plan.label} - ${plan.sub}`} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     </div>
                     <div className="p-5 border-t border-border">
@@ -170,7 +170,7 @@ const FloorPlansPage = () => {
               <div className="text-center mt-6">
                 <button
                   onClick={handleDownloadPdf}
-                  className="inline-flex items-center gap-2 border border-accent text-accent px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+                  className="inline-flex items-center gap-2 border border-button text-button px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-button hover:text-button-foreground"
                 >
                   <Download className="w-4 h-4" /> Download Floor Plans
                 </button>
@@ -199,7 +199,7 @@ const FloorPlansPage = () => {
                   <Link to="/contact" className="flex items-center justify-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
                     <Calendar className="w-4 h-4" /> Schedule a Viewing
                   </Link>
-                  <a href="tel:16313635760" className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
+                  <a href="tel:16313635760" className="flex items-center justify-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
                     Call (631) 363-5760
                   </a>
                 </div>
@@ -242,7 +242,7 @@ const FloorPlansPage = () => {
             <div className="text-center border border-border bg-card p-10">
               <h3 className="font-display text-2xl font-semibold text-primary mb-3">Have Questions?</h3>
               <p className="text-muted-foreground text-base mb-6">Call our leasing office for current availability and pricing.</p>
-              <a href="tel:16313635760" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
+              <a href="tel:16313635760" className="inline-flex items-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
                 Call (631) 363-5760 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -285,7 +285,7 @@ const FloorPlansPage = () => {
               <img
                 src={allLightboxItems[currentLightboxIndex].src}
                 alt={allLightboxItems[currentLightboxIndex].alt}
-                className={`w-full max-h-[85vh] ${lightbox.type === "plan" ? "object-contain bg-white p-4" : "object-contain"}`}
+                className={`w-full max-h-[85vh] ${lightbox.type === "plan" ? "object-contain bg-cream p-4" : "object-contain"}`}
               />
               <p className="text-primary-foreground/70 text-sm text-center mt-4">{allLightboxItems[currentLightboxIndex].alt}</p>
             </motion.div>

@@ -246,7 +246,7 @@ const IndexPage = () => {
             <div className="text-center mt-12">
               <Link
                 to="/amenities"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
               >
                 Explore All Amenities <ArrowRight className="w-4 h-4" />
               </Link>
