@@ -72,6 +72,7 @@ export default {
           light: "hsl(var(--copper-light))",
         },
         "warm-brown": "hsl(var(--warm-brown))",
+        "steel-blue": "hsl(var(--steel-blue))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
