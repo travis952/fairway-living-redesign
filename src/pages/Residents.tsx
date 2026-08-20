@@ -24,7 +24,7 @@ const ResidentsPage = () => {
               <p className="text-accent font-semibold text-xs uppercase tracking-[0.3em] mb-3">Resident Portal</p>
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-6">Access Your Portal</h2>
               <p className="text-muted-foreground text-base max-w-xl mx-auto mb-8">Current residents can access the portal for payments, maintenance requests, documents, and community updates.</p>
-              <a href="https://www.appfolio.com/login" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
+              <a href="https://www.appfolio.com/login" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
                 <ExternalLink className="w-4 h-4" /> Resident Login
               </a>
             </div>
