@@ -156,7 +156,7 @@ const IndexPage = () => {
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-primary leading-tight">
                   Feel at Home.
                   <br />
-                  <span className="italic font-normal text-accent">Live the way</span> you've always wanted.
+                  <span className="italic font-normal text-steel-blue">Live the way</span> you've always wanted.
                 </h2>
                 <p className="text-muted-foreground text-base leading-relaxed">
                   Fairway Manor is senior rental community for ages 55 and older. Our gated community is situated on 75 picturesque wooded acres, has beautiful manicured landscaping, and a patio with barbecue grills that overlooks a scenic lake.
