@@ -45,7 +45,7 @@ const Navbar = () => {
             </a>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase font-semibold bg-accent text-accent-foreground px-4 py-1.5 hover:brightness-110 transition-all"
+              className="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase font-semibold bg-button text-button-foreground hover:bg-button-hover px-4 py-1.5 hover:brightness-110 transition-all"
             >
               <Calendar className="w-3 h-3" />
               Schedule Now
@@ -105,7 +105,7 @@ const Navbar = () => {
               to="/contact"
               className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-widest transition-all duration-300 ${
                 isScrolled
-                  ? "bg-accent text-accent-foreground hover:brightness-110"
+                  ? "bg-button text-button-foreground hover:bg-button-hover hover:brightness-110"
                   : "bg-primary-foreground/15 text-primary-foreground border border-primary-foreground/30 hover:bg-primary-foreground/25 backdrop-blur-sm"
               }`}
             >
@@ -155,7 +155,7 @@ const Navbar = () => {
                     <Phone className="w-4 h-4 text-accent" />
                     (631) 363-5760
                   </a>
-                  <Link to="/contact" className="bg-accent text-accent-foreground px-5 py-3 text-center font-semibold text-sm uppercase tracking-wider mt-2 flex items-center justify-center gap-2">
+                  <Link to="/contact" className="bg-button text-button-foreground hover:bg-button-hover px-5 py-3 text-center font-semibold text-sm uppercase tracking-wider mt-2 flex items-center justify-center gap-2">
                     <Calendar className="w-4 h-4" /> Book Now
                   </Link>
                 </div>

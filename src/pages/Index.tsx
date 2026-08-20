@@ -85,7 +85,7 @@ const IndexPage = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/floor-plans"
-                  className="bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2"
+                  className="bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2"
                 >
                   Find Your Home
                   <ArrowRight className="w-4 h-4" />
@@ -267,7 +267,7 @@ const IndexPage = () => {
               </h2>
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110"
+                className="inline-flex items-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110"
               >
                 View Full Gallery <ArrowRight className="w-4 h-4" />
               </Link>
@@ -314,7 +314,7 @@ const IndexPage = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="tel:16313635760"
-                  className="bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] text-center"
+                  className="bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] text-center"
                 >
                   Call (631) 363-5760
                 </a>

@@ -87,7 +87,7 @@ const JournalPage = () => {
                 <input type="text" placeholder="Your name" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
                 <input type="email" placeholder="Your email address" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
                 <input type="tel" placeholder="Your phone number" className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm" />
-                <button className="bg-accent text-accent-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 whitespace-nowrap">Connect</button>
+                <button className="bg-button text-button-foreground hover:bg-button-hover px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 whitespace-nowrap">Connect</button>
               </div>
             </div>
           </SectionReveal>

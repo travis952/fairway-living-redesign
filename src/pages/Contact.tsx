@@ -127,7 +127,7 @@ const ContactPage = () => {
                       <label className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">Message</label>
                       <textarea rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-5 py-3 bg-background text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:border-accent text-sm resize-none transition-colors" placeholder="Tell us about what you're looking for..." />
                     </div>
-                    <button type="submit" className="w-full bg-accent text-accent-foreground px-7 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2">
+                    <button type="submit" className="w-full bg-button text-button-foreground hover:bg-button-hover px-7 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2">
                       <Send className="w-4 h-4" /> Request Information
                     </button>
                   </form>

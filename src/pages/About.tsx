@@ -111,7 +111,7 @@ const AboutPage = () => {
               <div className="edge-line mb-6" />
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary-foreground mb-6">Come See For Yourself</h2>
               <p className="text-primary-foreground/70 text-base mb-8">Schedule a tour and discover why Fairway Manor is the best deal on Long Island for active adult communities.</p>
-              <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
+              <Link to="/contact" className="bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
                 Schedule a Tour
               </Link>
             </div>
