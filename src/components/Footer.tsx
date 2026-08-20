@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-footer text-primary-foreground">
       {/* Newsletter Strip */}
       <div className="border-b border-primary-foreground/10">
         <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -18,7 +18,7 @@ const Footer = () => {
               placeholder="Your email address"
               className="flex-1 md:w-72 px-5 py-3 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40 border border-primary-foreground/20 border-r-0 focus:outline-none focus:border-accent text-sm"
             />
-            <button className="bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:brightness-110 transition-all whitespace-nowrap">
+            <button className="bg-button text-button-foreground hover:bg-button-hover px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:brightness-110 transition-all whitespace-nowrap">
               Connect
             </button>
           </div>

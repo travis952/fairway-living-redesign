@@ -43,6 +43,12 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        button: {
+          DEFAULT: "hsl(var(--button))",
+          foreground: "hsl(var(--button-foreground))",
+          hover: "hsl(var(--button-hover))",
+        },
+        footer: "hsl(var(--footer))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

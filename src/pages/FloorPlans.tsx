@@ -196,7 +196,7 @@ const FloorPlansPage = () => {
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/contact" className="flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
+                  <Link to="/contact" className="flex items-center justify-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">
                     <Calendar className="w-4 h-4" /> Schedule a Viewing
                   </Link>
                   <a href="tel:16313635760" className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110">

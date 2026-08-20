@@ -191,7 +191,7 @@ const EventsPage = () => {
               <div className="edge-line mx-auto mb-6" />
               <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary-foreground mb-6">Want to Join the Fun?</h2>
               <p className="text-primary-foreground/70 text-base mb-8">Schedule a tour and see what community living is all about.</p>
-              <Link to="/contact" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
+              <Link to="/contact" className="inline-flex items-center gap-2 bg-button text-button-foreground hover:bg-button-hover px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:brightness-110 active:scale-[0.98]">
                 Schedule a Tour <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
