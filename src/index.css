@@ -6,62 +6,62 @@
 
 @layer base {
   :root {
-    --background: 45 24% 93%;
-    --foreground: 0 0% 10%;
-    --heading: 185 14% 19%;
+    /* ---- light surfaces ---------------------------------------- */
+    --background: 45 23.5% 93.3%;        /* #F2F0EA  sections        */
+    --surface: 45 20% 91%;               /* #EDEAE2  one step down   */
+    --card: 45 20% 90%;                  /* #EBE8E0                  */
+    --popover: 45 23.5% 93.3%;           /* #F2F0EA                  */
+    --secondary: 45 18% 90%;             /* #EAE7DF                  */
+    --muted: 45 12% 86%;                 /* #E1DDD6                  */
+    --border: 45 14% 85%;                /* #DEDAD1                  */
+    --input: 45 14% 85%;                 /* #DEDAD1                  */
+    --cream: 45 28.6% 94.5%;             /* #F5F3ED                  */
 
-    --card: 45 20% 90%;
-    --card-foreground: 0 0% 10%;
+    /* ---- text on light ------------------------------------------ */
+    /* body stays near-black on purpose: no slate tint, max legibility */
+    --foreground: 0 0% 10%;              /* #1A1A1A  body            */
+    --card-foreground: 0 0% 10%;         /* #1A1A1A                  */
+    --popover-foreground: 0 0% 10%;      /* #1A1A1A                  */
+    --secondary-foreground: 0 0% 10%;    /* #1A1A1A                  */
+    --muted-foreground: 0 0% 32%;        /* #525252  captions        */
+    --heading: 184.6 13.7% 18.6%;        /* #293536  h1-h6 only      */
+    --charcoal: 184.6 13.7% 18.6%;       /* #293536                  */
 
-    --popover: 45 24% 93%;
-    --popover-foreground: 0 0% 10%;
+    /* ---- brand darks -------------------------------------------- */
+    --primary: 190 9.5% 37.3%;           /* #566568  header / nav    */
+    --primary-foreground: 45 28.6% 94.5%;/* #F5F3ED                  */
+    --button: 189 11.2% 34.9%;           /* #4F6063  primary CTA     */
+    --button-foreground: 45 28.6% 94.5%; /* #F5F3ED                  */
+    --button-hover: 187.8 15.9% 28.4%;   /* #3D5154                  */
+    --footer: 186 12.5% 31.4%;           /* #46585A                  */
+    --footer-foreground: 45 28.6% 94.5%; /* #F5F3ED                  */
+    --warm-brown: 187.8 15.9% 28.4%;     /* #3D5154  dark bg ONLY    */
+    --sage: 190 8% 55%;                  /* #82908F                  */
 
-    --primary: 190 9% 37%;
-    --primary-foreground: 45 29% 95%;
+    /* ---- accent -------------------------------------------------- */
+    --accent: 36.9 31% 50.6%;            /* #A88A5A  lines, fills    */
+    --accent-foreground: 45 28.6% 94.5%; /* #F5F3ED                  */
+    --accent-text: 36.9 31% 38%;         /* #7F6843  small gold text */
+    --gold: 36.9 31% 50.6%;              /* #A88A5A                  */
+    --gold-foreground: 45 28.6% 94.5%;   /* #F5F3ED                  */
+    --copper: 36.9 31% 50.6%;            /* #A88A5A                  */
+    --copper-light: 37 34% 66%;          /* #C6AA82                  */
+    --ring: 36.9 31% 50.6%;              /* #A88A5A                  */
 
-    --secondary: 45 18% 90%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 45 12% 86%;
-    --muted-foreground: 0 0% 32%;
-
-    --accent: 37 31% 51%;
-    --accent-foreground: 45 29% 95%;
-
-    --button: 189 11% 35%;
-    --button-foreground: 45 29% 95%;
-    --button-hover: 188 16% 28%;
-    --footer: 186 13% 31%;
-
+    /* ---- status -------------------------------------------------- */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 45 14% 85%;
-    --input: 45 14% 85%;
-    --ring: 37 31% 51%;
-
     --radius: 0px;
 
+    /* ---- sidebar ------------------------------------------------- */
     --sidebar-background: 45 20% 90%;
     --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 190 9% 37%;
-    --sidebar-primary-foreground: 45 29% 95%;
-    --sidebar-accent: 37 31% 51%;
-    --sidebar-accent-foreground: 45 29% 95%;
+    --sidebar-primary: 190 9.5% 37.3%;
+    --sidebar-primary-foreground: 45 28.6% 94.5%;
+    --sidebar-accent: 36.9 31% 50.6%;
+    --sidebar-accent-foreground: 45 28.6% 94.5%;
     --sidebar-border: 45 14% 85%;
-    --sidebar-ring: 37 31% 51%;
-
-    --gold: 37 31% 51%;
-    --gold-foreground: 45 29% 95%;
-    --surface: 45 24% 93%;
-
-    --sage: 190 8% 55%;
-    --cream: 45 29% 95%;
-    --charcoal: 185 14% 19%;
-    --copper: 37 31% 51%;
-    --copper-light: 37 34% 66%;
-    --warm-brown: 188 16% 28%;
-    --steel-blue: 205 32% 42%;
+    --sidebar-ring: 36.9 31% 50.6%;
   }
 }
 
@@ -69,7 +69,6 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
     font-family: 'DM Sans', system-ui, sans-serif;
@@ -78,7 +77,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     color: hsl(var(--heading));
@@ -86,11 +84,9 @@
     text-wrap: balance;
     line-height: 1.15;
   }
-
   p {
     text-wrap: pretty;
   }
-
   ::selection {
     background: hsl(var(--accent) / 0.25);
   }
@@ -100,53 +96,43 @@
   .section-padding {
     @apply px-6 py-20 md:px-12 lg:px-20 lg:py-28;
   }
-
   .sharp-card {
     @apply bg-card border border-border;
   }
-
   .fairway-shadow {
-    box-shadow: 0 2px 8px rgba(0,0,0,.04), 0 12px 40px rgba(0,0,0,.06);
+    box-shadow: 0 2px 8px rgba(41,53,54,.04), 0 12px 40px rgba(41,53,54,.06);
   }
-
   .text-display {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     letter-spacing: -0.01em;
   }
-
   .edge-line {
     @apply w-12 h-[2px] bg-accent;
   }
-
   .parallax-container {
     @apply relative overflow-hidden;
   }
-
   .parallax-image {
     will-change: transform;
     transition: transform 0.1s linear;
   }
-
   .hover-lift {
     @apply transition-all duration-500;
   }
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    box-shadow: 0 8px 30px rgba(41,53,54,.08);
   }
-
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--heading)), hsl(var(--accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
   .overlay-gradient {
     background: linear-gradient(180deg, transparent 0%, hsl(var(--heading) / 0.6) 100%);
   }
-
   .feature-card-hover {
     @apply relative overflow-hidden transition-all duration-500;
   }
@@ -160,14 +146,12 @@
   .feature-card-hover:hover::after {
     transform: scaleX(1);
   }
-
   /* Sticky parallax for fixed background sections */
   .sticky-parallax {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
   }
-
   @supports (-webkit-touch-callout: none) {
     .sticky-parallax {
       background-attachment: scroll;
